@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDEA Restaurant - Bank Transfer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px 24px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            font-size: 30px;
+        }
+
+        .tagline {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 28px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            text-align: left;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .account-box {
+            background: #f3efff;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .account-number {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            background: #6c4ab6;
+            color: white;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+        .copied {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+
+        .contact {
+            margin-top: 25px;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>IDEA RESTAURANT</h1>
+
+    <div class="tagline">
+        A New Idea in Every Bite
+    </div>
+
+    <h2>ONLINE TRANSFER DETAILS</h2>
+    <div class="details">
+        <strong>🏦 Bank:</strong> HNB<br>
+        <strong>📍 Branch:</strong> Piliyandala Branch<br>
+        <strong>👤 Account Name:</strong> P.P. Malinga Menuwan
+    </div>
+
+    <div class="account-box">
+        <div>Account Number</div>
+
+        <div class="account-number" id="accountNumber">
+            703020167743
+        </div>
+
+        <br>
+
+        <button onclick="copyAccountNumber()">
+            📋 COPY ACCOUNT NUMBER
+        </button>
+        <div class="copied" id="copiedMessage">
+            ✓ Account number copied!
+        </div>
+    </div>
+
+    <div class="contact">
+        <strong>Scan to Pay</strong><br><br>
+        077 381 0445 &nbsp; | &nbsp; 071 381 0445
+    </div>
+
+</div>
+
+<script>
+function copyAccountNumber() {
+    const accountNumber =
+        document.getElementById("accountNumber").innerText.trim();
+
+    navigator.clipboard.writeText(accountNumber).then(function() {
+        const message =
+            document.getElementById("copiedMessage");
+
+        message.style.display = "block";
+
+        setTimeout(function() {
+            message.style.display = "none";
+        }, 2000);
+
+    }).catch(function() {
+        alert("Please copy the account number manually: " + accountNumber);
+    });
+}
+</script>
+
+</body>
+</html>
